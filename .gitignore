@@ -1,0 +1,12 @@
+# Operating system files and folders
+.DS_Store
+Thumbs.db
+
+# Code editor  files
+.vscode
+
+# Support files
+*.log*
+node_modules/
+
+build/
