@@ -1,0 +1,30 @@
+.features {
+  display: grid;
+  align-items: start;
+  margin: 15rem 0;
+
+  // background-color: $color-grey-light-2;
+  grid-column: center-start / center-end;
+  grid-gap: 6rem;
+  // grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}
+
+.feature {
+  display: grid;
+  grid-column-gap: 2.5rem;
+  grid-row-gap: 1.5rem;
+  grid-template-columns: min-content 1fr;
+}
+
+.feature__icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  fill: $color-primary;
+  grid-row: 1 / span 2;
+  transform: translateY(-1rem);
+}
+
+.feature__text {
+  font-size: 1.7rem;
+}
