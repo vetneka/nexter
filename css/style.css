@@ -8,6 +8,9 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 50%; } }
 
 body {
   color: #6D5D4B;
@@ -19,10 +22,23 @@ body {
   display: grid;
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content); }
+  @media only screen and (max-width: 62.5em) {
+    .container {
+      font-size: 50%;
+      grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+      grid-template-rows: auto 80vh min-content 40vw repeat(3, min-content); } }
+  @media only screen and (max-width: 50em) {
+    .container {
+      grid-template-rows: auto calc(100vh - 6rem); } }
 
 .heading-1, .heading-2, .heading-3, .heading-4 {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 400; }
+
+.heading-1 {
+  color: #f9f7f6;
+  font-size: 4.5rem;
+  line-height: 1; }
 
 .heading-2 {
   font-size: 4rem;
@@ -77,6 +93,13 @@ body {
   background-color: #c69963;
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1; }
+  @media only screen and (max-width: 62.5em) {
+    .sidebar {
+      align-items: center;
+      justify-content: flex-end;
+      padding: 3rem 3rem 3rem 0;
+      grid-column: 1 / -1;
+      grid-row: span 1; } }
 
 .nav-btn {
   width: 4.5rem;
@@ -85,6 +108,9 @@ body {
   margin-top: 4rem;
   background-color: #fff;
   border-radius: 0; }
+  @media only screen and (max-width: 62.5em) {
+    .nav-btn {
+      margin-top: 0; } }
   .nav-btn::before, .nav-btn::after {
     display: block;
     width: 4.5rem;
@@ -93,16 +119,104 @@ body {
     content: ""; }
   .nav-btn::before {
     transform: translateY(-1.5rem); }
+    @media only screen and (max-width: 62.5em) {
+      .nav-btn::before {
+        transform: translateY(-1.3rem); } }
   .nav-btn::after {
     transform: translateY(1.4rem); }
+    @media only screen and (max-width: 62.5em) {
+      .nav-btn::after {
+        transform: translateY(1.2rem); } }
 
 .header {
-  background-color: #6D5D4B;
-  grid-column: full-start / col-end 6; }
+  display: grid;
+  justify-content: center;
+  padding: 8rem;
+  padding-top: 4rem;
+  background-image: linear-gradient(rgba(16, 29, 44, 0.93), rgba(16, 29, 44, 0.93)), url("../img/hero.jpeg");
+  background-position: center;
+  background-size: cover;
+  grid-column: full-start / col-end 6;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr min-content min-content 1fr; }
+  @media only screen and (max-width: 50em) {
+    .header {
+      grid-column: 1 / -1; } }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      padding: 5rem; } }
+
+.header__logo {
+  height: 3rem;
+  align-self: start;
+  justify-self: center; }
+
+.header__title {
+  padding: 1rem 0 3.5rem; }
+
+.header__seenon-text {
+  display: grid;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: #aaa;
+  font-size: 1.6rem;
+  grid-column-gap: 1.5rem;
+  grid-template-columns: 1fr max-content 1fr; }
+  .header__seenon-text::before, .header__seenon-text::after {
+    display: block;
+    height: 1px;
+    background-color: currentColor;
+    content: ""; }
+
+.header__seenon-logos {
+  display: grid;
+  align-items: center;
+  grid-gap: 3rem;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center; }
+  .header__seenon-logos img {
+    max-width: 100%;
+    max-height: 2.5rem;
+    filter: brightness(70%); }
+
+.header__btn {
+  align-self: start;
+  justify-self: start; }
 
 .realtors {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  padding: 3rem;
   background-color: #101d2c;
-  grid-column: col-start 7 / full-end; }
+  grid-column: col-start 7 / full-end;
+  grid-row-gap: 2rem;
+  justify-items: center; }
+  @media only screen and (max-width: 50em) {
+    .realtors {
+      grid-column: 1 / -1; } }
+
+.realtors__list {
+  display: grid;
+  align-items: center;
+  grid-column-gap: 2rem;
+  grid-row-gap: 5vh; }
+  @media only screen and (max-width: 50em) {
+    .realtors__list {
+      grid-template-columns: repeat(3, min-content 1fr); } }
+  @media only screen and (max-width: 37.5em) {
+    .realtors__list {
+      grid-template-columns: min-content 1fr; } }
+
+.realtors__img {
+  display: block;
+  width: 7rem;
+  border-radius: 50%; }
+
+.realtors__sold {
+  margin-top: -3px;
+  color: #aaa;
+  text-transform: uppercase; }
 
 .features {
   display: grid;
@@ -137,19 +251,32 @@ body {
   grid-column: full-start / col-end 4;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr); }
+  @media only screen and (max-width: 50em) {
+    .story__pictures {
+      padding: 3rem;
+      grid-column: 1 / -1;
+      grid-row: 6 / span 1; } }
 
-.story__img--1 {
-  width: 100%;
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
-  grid-column: 2 / 6;
-  grid-row: 2 / -2; }
-
-.story__img--2 {
-  z-index: 2;
-  width: 115%;
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
-  grid-column: 4 / 7;
-  grid-row: 4 / -2; }
+.story__img {
+  width: 100%; }
+  .story__img--1 {
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+    grid-column: 2 / 6;
+    grid-row: 2 / -2; }
+    @media only screen and (max-width: 50em) {
+      .story__img--1 {
+        grid-column: 1 / 5;
+        grid-row: 1 / -1; } }
+  .story__img--2 {
+    z-index: 2;
+    width: 115%;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+    grid-column: 4 / 7;
+    grid-row: 4 / -2; }
+    @media only screen and (max-width: 50em) {
+      .story__img--2 {
+        width: 100%;
+        grid-row: 1 / -1; } }
 
 .story__content {
   display: flex;
@@ -159,6 +286,10 @@ body {
   padding: 6rem 8vw;
   background-color: #f9f7f6;
   grid-column: col-start 5 / full-end; }
+  @media only screen and (max-width: 50em) {
+    .story__content {
+      grid-column: 1 / -1;
+      grid-row: 5 / span 1; } }
 
 .story__text {
   margin-bottom: 4rem;
